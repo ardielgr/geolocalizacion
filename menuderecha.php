@@ -1,12 +1,16 @@
 <?php
-    if(!isset($_SESSION)){ 
-    session_start();
-    if ($_SESSION['k_username'] == null) {
+
+
+
+    //if(!isset($_SESSION)){ 
+
+    
+    if (@$_SESSION['k_username'] == null) {
         ?>
-        <ul class="navbar-text pull-right">
+       <ul class="navbar-text pull-right">
             <a href="<?ruta_raiz();?>/login/registro.php" class="navbar-link">Registrarse</a>
             <a href="<?ruta_raiz();?>/login/login.php" class="navbar-link">Logearse</a>
-        </ul>
+       </ul>
         <?php
     } else {
         ?>
@@ -15,7 +19,9 @@
         </ul>
         <?php
     }
-	}
+	//}
+        
+        
 ?>
 <!-- A CONTINUACIÓN CERRAMOS TODAS LAS SECCIONES ABIERTAS EN CABECERA.PHP -->
           </div><!--/.nav-collapse -->

@@ -45,8 +45,16 @@
             $row = mysqli_fetch_array($sql);
             if($row["nombre"] == $usuario){ //si existe el usuario en la bbdd
                 if($row["password"] == $password) { //si la contraseña coincide con la almacenada
+                    
+                    session_start();
+                    
                     $_SESSION["k_username"] = $row["nombre"];
+                    
+                    
+                    echo $_SESSION['k_username'];
+                    
                     echo 'Has sido logueado correctamente '.$_SESSION["k_username"].' <p>';
+                    header('location: ../');
                     ?>
                     <SCRIPT LANGUAGE="javascript"> location.href = "<?ruta_raiz();?>/index.php" </SCRIPT>
                     <?php

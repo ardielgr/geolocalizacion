@@ -1,21 +1,36 @@
 <?
+/*
+$caca = exif_read_data( '../caca.jpg' );
+echo '<pre>';
+print_r( $caca );
+echo '</pre>';
+exit();
+*/
+
+    ob_start();
+    session_start();
     require_once("./cabecera.php");
+    
+    
+    //print_r( $_SESSION );
+    
 ?>
             <ul class="nav">
               <li class="active"><a href="<?ruta_raiz();?>/index.php">Home</a></li>
               <?
-                if(!isset($_SESSION)){
-                    session_start();
-                    if ($_SESSION["k_username"] != null) {
+               // if(!isset($_SESSION)){
+                    //session_start();
+                    if (@$_SESSION["k_username"] != null) {
               ?>
                         <li><a href="<?ruta_raiz();?>/imagenes/imagenes.php">Imagenes</a></li>
               <?
                     }
-                }
+                //}
               ?>
             </ul>
-<?
+<?  
     require_once ("./menuderecha.php");
+ 
 ?>
             
             
@@ -34,5 +49,6 @@
     </div><!--/.fluid-container-->
 
 <?
+
 require_once("./pie.php");
 ?>

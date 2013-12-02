@@ -16,6 +16,11 @@
               ?>
             </ul>
 <?    
+
+    //print_r($_POST);
+    //print_r($_FILES);
+    //exit();
+
     require_once ("../menuderecha.php");
     require_once("coordenadas.php");
     require_once("../bbdd/bbdd.php");
