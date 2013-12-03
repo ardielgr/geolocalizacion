@@ -1,8 +1,8 @@
 <?
 /*
-$caca = exif_read_data( '../caca.jpg' );
+$lala = exif_read_data( '../lala.jpg' );
 echo '<pre>';
-print_r( $caca );
+print_r( $lala );
 echo '</pre>';
 exit();
 */
