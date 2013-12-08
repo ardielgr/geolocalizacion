@@ -27,7 +27,82 @@ function ruta_raiz() {
       }
     </style>
     <link href="<?ruta_raiz();?>/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="<?ruta_raiz();?>/jquery.min.js"></script>
 
+    
+<link rel="stylesheet" href="<?ruta_raiz();?>/gmap3-menu.css">
+	<script src="<?ruta_raiz();?>/gmap3.min.js"></script>
+	<script src="<?ruta_raiz();?>/gmap3-menu.js"></script>    
+    
+    <!-- MAPS -->
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+
+$(document).ready(function() {
+	
+
+      var map = null;
+      var marker = null;
+
+function createMarker(latlng, name, html) {
+    var contentString = html;
+    var marker = new google.maps.Marker({
+        position: latlng,
+        map: map,
+        zIndex: Math.round(latlng.lat()*-100000)<<5
+        });
+
+    google.maps.event.addListener(marker, 'click', function() {
+alert(latlng.lat()+","+latlng.lng());
+        	//$("#latitud").val( latlng.lat() );
+	    	//$("#longitud").val( latlng.lng() );
+
+        });
+    google.maps.event.trigger(marker, 'click');    
+    return marker;
+}
+
+ 
+
+function initialize() {
+
+
+  var myOptions = {
+    zoom: 12,
+    center: new google.maps.LatLng(28.48197,-16.301908),
+    mapTypeControl: false,
+    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+    navigationControl: false,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+
+  map = new google.maps.Map( document.getElementById("map2") , myOptions );
+ 
+  google.maps.event.addListener(map, 'click', function(event) {
+         if (marker) {
+            marker.setMap(null);
+            marker = null;
+         }
+     marker = createMarker(event.latLng);
+     
+  });
+
+}
+
+initialize();
+
+
+
+
+
+
+
+
+});
+
+	    </script>
+
+<!-- FIN MAPS -->
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

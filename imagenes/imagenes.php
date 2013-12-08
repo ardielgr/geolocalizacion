@@ -32,6 +32,11 @@
               <h2>Listado de sus imágenes</h2>
                 <p><a class="btn btn-primary btn-large" href="<?ruta_raiz();?>/mapa/listado.php">Pulse aquí...</a></p>
           </div>
+            
+          <div class="hero-unit">
+              <h2>Buscar imágenes por zona</h2>
+                <p><a class="btn btn-primary btn-large" href="<?ruta_raiz();?>/mapa/busqueda_zona.php">Pulse aquí...</a></p>
+          </div>
          
         </div><!--/span-->
       </div><!--/row-->

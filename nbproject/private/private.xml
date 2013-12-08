@@ -3,13 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/geolocalizacion/pie.php</file>
             <file>file:/C:/xampp/htdocs/geolocalizacion/menuderecha.php</file>
             <file>file:/C:/xampp/htdocs/geolocalizacion/login/registro.php</file>
-            <file>file:/C:/xampp/htdocs/geolocalizacion/index.php</file>
+            <file>file:/C:/xampp/htdocs/geolocalizacion/bootstrap/css/bootstrap.css</file>
             <file>file:/C:/xampp/htdocs/geolocalizacion/login/login.php</file>
-            <file>file:/C:/xampp/htdocs/geolocalizacion/cabecera.php</file>
-            <file>file:/C:/xampp/htdocs/geolocalizacion/imagenes/imagenes.php</file>
+            <file>file:/C:/xampp/htdocs/geolocalizacion/mapa/busqueda_zona.php</file>
             <file>file:/C:/xampp/htdocs/geolocalizacion/propiedades/propiedades.php</file>
+            <file>file:/C:/xampp/htdocs/geolocalizacion/bootstrap/css/bootstrap-responsive.css</file>
+            <file>file:/C:/xampp/htdocs/geolocalizacion/bootstrap/css/bootstrap.min.css</file>
+            <file>file:/C:/xampp/htdocs/geolocalizacion/index.php</file>
+            <file>file:/C:/xampp/htdocs/geolocalizacion/bootstrap/css/bootstrap-responsive.min.css</file>
+            <file>file:/C:/xampp/htdocs/geolocalizacion/cabecera.php</file>
+            <file>file:/C:/xampp/htdocs/geolocalizacion/mapa/listado.php</file>
+            <file>file:/C:/xampp/htdocs/geolocalizacion/imagenes/imagenes.php</file>
             <file>file:/C:/xampp/htdocs/geolocalizacion/login/logout.php</file>
             <file>file:/C:/xampp/htdocs/geolocalizacion/propiedades/fimagen.php</file>
         </group>
