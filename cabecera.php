@@ -56,7 +56,10 @@ function createMarker(latlng, name, html) {
 alert(latlng.lat()+","+latlng.lng());
         	//$("#latitud").val( latlng.lat() );
 	    	//$("#longitud").val( latlng.lng() );
-
+                $latitud_mapa1 = latlng.lat();
+                $longitud_mapa1 = latlng.lng();
+                
+ 
         });
     google.maps.event.trigger(marker, 'click');    
     return marker;
@@ -84,6 +87,7 @@ function initialize() {
             marker = null;
          }
      marker = createMarker(event.latLng);
+     marker2 = createMarker(event.latLng); //Tal vez no funciona
      
   });
 
