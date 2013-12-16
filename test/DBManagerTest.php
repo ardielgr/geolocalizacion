@@ -33,5 +33,12 @@ class DBManagerTest extends PHPUnit_Framework_TestCase{
     public function testGetUser(){
         $this->assertNotNull($this->_dbMan->GetUser(1));
     }
+    
+    public function testAuthUserGood(){
+        $this->assertTrue($this->_dbMan->AuthUser("root", "root"));
+    }
+    public function testAuthUserBad(){
+        $this->assertFalse($this->_dbMan->AuthUser("pepito", "nosecuantos"));
+    }
 }
 

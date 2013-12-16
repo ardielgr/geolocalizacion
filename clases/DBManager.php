@@ -1,5 +1,6 @@
 <?php
-require_once './clases/Picture.php';
+set_include_path('./');
+require_once 'Picture.php';
 
 class DBManager{
     const IMAGES_TABLE = "imagenes";
@@ -42,6 +43,17 @@ class DBManager{
     
     function GetUser($i_id){
         return 0;
+    }
+    
+    function AuthUser($i_uname, $i_upass){
+        $query = "SELECT * FROM " . self::USERS_TABLE . " WHERE nombre=\"$i_uname\" AND password=\"$i_upass\" ";
+        $result = mysqli_query($this->_conexion, $query);
+        $fila = mysqli_fetch_array($result);
+        if ($fila != NULL){
+            return true;
+        }else{
+            return false;
+        }
     }
     
 }

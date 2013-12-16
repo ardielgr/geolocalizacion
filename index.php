@@ -7,7 +7,7 @@ echo '</pre>';
 exit();
 */
 
-    ob_start();
+    //ob_start();
     session_start();
     require_once("./cabecera.php");
     
@@ -18,14 +18,9 @@ exit();
             <ul class="nav">
               <li class="active"><a href="<?ruta_raiz();?>/index.php">Home</a></li>
               <?
-               // if(!isset($_SESSION)){
-                    //session_start();
                     if (@$_SESSION["k_username"] != null) {
-              ?>
-                        <li><a href="<?ruta_raiz();?>/imagenes/imagenes.php">Imagenes</a></li>
-              <?
+                        echo("<li><a href=\"$ruta_raiz()/imagenes/imagenes.php\">Imagenes</a></li>");
                     }
-                //}
               ?>
             </ul>
 <?  
