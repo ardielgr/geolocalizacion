@@ -17,10 +17,10 @@
             $lon = Gps::getGps($exif['GPS']["GPSLongitude"], $exif['GPS']['GPSLongitudeRef']);
             $lat = Gps::getGps($exif['GPS']["GPSLatitude"], $exif['GPS']['GPSLatitudeRef']);
 
-            $db = new DBManager('localhost', 'root', 'root', 'MyPhoto');
+            
             $img = new Picture($iname, $usuario, $path, $tipo, $lon, $lat);
-            if (!$db->ExistImage($iname)){
-                if ($db->AddImage($img)){
+            if (!DBManager::ExistImage($iname)){
+                if (DBManager::AddImage($img)){
                     echo ("<span>Imagen $iname a&ntilde;adida a la base de datos.</span><br />");
                 }
             }

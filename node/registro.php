@@ -16,13 +16,12 @@
                 Registro();
             }
             else{
-                $db = new DBManager('localhost', 'root', 'root', 'MyPhoto');
-                if ($db->ExistUser($username)){
+                if (DBManager::ExistUser($username)){
                     echo ("<span>El nombre de usuario est&aacute; ya en uso.</span><br />");
                     Registro();
                 }
                 else{
-                    $db->AddUser($username, $password);
+                    DBManager::AddUser($username, $password);
                     echo ("<span>El usuario $username ha sido registrado de manera satisfactoria.</span><br />");
                     // Iniciamos sesión al crear nuevo usuario
                     session_start();

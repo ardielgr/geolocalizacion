@@ -17,8 +17,7 @@
         if ($_GET["seccion"] != NULL){
             if ($_GET["seccion"] == "listado"){
                 $uname = $_SESSION["k_username"];
-                $db = new DBManager('localhost', 'root', 'root', 'MyPhoto');
-                $imgs = $db->GetUserImagesPaths($uname);
+                $imgs = DBManager::GetUserImagesPaths($uname);
                 if ($imgs != NULL){
                     echo ('<table BORDER="3" CELLPADDING="10" WIDTH="35%" ALIGN="center">'."\n"); 
                     echo ('<tr><td>Im&aacute;genes</td></tr>'."\n"); 

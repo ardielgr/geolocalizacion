@@ -4,41 +4,32 @@ require_once "./clases/DBManager.php";
 
 class DBManagerTest extends PHPUnit_Framework_TestCase{
     
-    var $_dbMan;
-    
-    function setUp(){
-        $this->_dbMan = new DBManager('localhost', 'root', 'root', 'MyPhoto');
-    }
-    
-    public function tearDown(){ }
-    
     public function testInstanciarYConectar(){
-        $this->_dbMan = new DBManager('localhost', 'root', 'root', 'MyPhoto');
-        $this->assertNotNull($this->_dbMan->_conexion);
-    }
-    
-    public function testInstanciarYConectarFail(){
-        $this->_dbMan = new DBManager('localhost', 'invalid', 'invalid', 'MyPhoto');
-        $this->assertNull($this->_dbMan->_conexion);
+        
+        $this->assertNotNull(DBManager::GetConnection());
     }
     
     public function testGetPicture(){
-        $this->assertNotNull($this->_dbMan->GetPicture(1));
+        $this->assertNotNull(DBManager::GetPicture(1));
     }
     
     public function testGetPictureFail(){
-        $this->assertNull($this->_dbMan->GetPicture(-15));
+        $this->assertNull(DBManager::GetPicture(-15));
     }
     
     public function testGetUser(){
-        $this->assertNotNull($this->_dbMan->GetUser(1));
+        $this->assertNotNull(DBManager::GetUser(1));
     }
     
-    public function testAuthUserGood(){
-        $this->assertTrue($this->_dbMan->AuthUser("root", "root"));
+    public function testGetUserFail(){
+        $this->assertNotNull(DBManager::GetUser(-15));
     }
-    public function testAuthUserBad(){
-        $this->assertFalse($this->_dbMan->AuthUser("pepito", "nosecuantos"));
+    
+    public function testAuthUser(){
+        $this->assertTrue(DBManager::AuthUser("root", "root"));
+    }
+    public function testAuthUserFail(){
+        $this->assertFalse(DBManager::AuthUser("pepito", "nosecuantos"));
     }
 }
 

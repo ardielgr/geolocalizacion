@@ -3,8 +3,7 @@
     require_once ("../clases/DBManager.php");
     
     $iname = $_GET['nombre'];
-    $db = new DBManager('localhost', 'root', 'root', 'MyPhoto');
-    $longlat = $db->GetImageLongAndLat($iname);
+    $longlat = DBManager::GetImageLongAndLat($iname);
     $longitud = $longlat[0];
     $latitud = $longlat[1];
 ?>
@@ -20,7 +19,7 @@
       function initialize(){
         var lon = '<?php echo $longitud;?>'
         var lat = '<?php echo $latitud;?>'
-        var nom = '<?php echo $nombre;?>'
+        var nom = '<?php echo $iname;?>'
         var latlng = new google.maps.LatLng(lat, lon);
         var myOptions = {
           zoom: 3,

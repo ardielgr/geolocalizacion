@@ -6,8 +6,7 @@
         if(trim($_POST["usuario"]) != '' && trim($_POST["password"]) != ''){
             $usuario = $_POST["usuario"]; 
             $password = $_POST["password"];
-            $db = new DBManager('localhost', 'root', 'root', 'MyPhoto');
-            if ($db->AuthUser($usuario, $password)){
+            if (DBManager::AuthUser($usuario, $password)){
                 session_start();
                 $_SESSION["k_username"] = $usuario;
                 echo ("<span>Has sido logueado correctamente $_SESSION[k_username]</span>");
