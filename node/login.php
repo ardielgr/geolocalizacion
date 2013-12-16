@@ -10,10 +10,10 @@
             if ($db->AuthUser($usuario, $password)){
                 session_start();
                 $_SESSION["k_username"] = $usuario;
-                echo "<span>Has sido logueado correctamente $_SESSION[k_username]</span>";
-                echo("<SCRIPT LANGUAGE=\"javascript\"> location.href=\"../index.php\" </SCRIPT>");
+                echo ("<span>Has sido logueado correctamente $_SESSION[k_username]</span>");
+                echo ('<SCRIPT LANGUAGE="javascript"> location.href="'.ruta_raiz().'/index.php" </SCRIPT>');
             }else{
-                echo '<span>Debe especificar un usuario y password correctos</span>';
+                echo ('<span>Debe especificar un usuario y password correctos</span>');
                 Ingreso();
             }
         }else{
@@ -49,9 +49,9 @@
               
           </div>
          
-        </div><!--/span-->
-      </div><!--/row-->
-    </div><!--/.fluid-container-->
+        </div>
+      </div>
+    </div>
 END;
     }
     require_once ("../pie.php");

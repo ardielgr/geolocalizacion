@@ -1,16 +1,20 @@
 <?php
 
 class Picture{
-    var $id;
-    var $owner;
-    var $path;
-    var $longitud;
-    var $latitud;
+    public $id;
+    public $name;
+    public $owner;
+    public $path;
+    public $type;
+    public $longitud;
+    public $latitud;
     
-    function Picture ($i_id, $i_owner, $i_path, $i_long, $i_lat){
+    function Picture ($i_name, $i_owner, $i_path, $i_type, $i_long, $i_lat, $i_id = NULL){
         $this->id = $i_id;
+        $this->name = $i_name;
         $this->owner = $i_owner;
         $this->path = $i_path;
+        $this->type = $i_type;
         $this->longitud = $i_long;
         $this->latitud = $i_lat;
     }

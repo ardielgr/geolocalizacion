@@ -6,7 +6,7 @@ class PictureTest extends PHPUnit_Framework_TestCase{
     var $_picture;
     
     function setUp(){
-        $this->_picture = new Picture(0, "user", "./imagenes/CIMG0240.JPG", 1.0, -0.57);
+        $this->_picture = new Picture("user", "./imagenes/CIMG0240.JPG", 1.0, -0.57, 0);
     }
     
     public function tearDown(){ }
@@ -19,6 +19,6 @@ class PictureTest extends PHPUnit_Framework_TestCase{
         $this->_picture->path = "/foo/bar.jpg";
         $this->assertFalse($this->_picture->validPath());
     }
-    
+   
 }
 

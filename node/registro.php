@@ -1,33 +1,33 @@
 <?php
     require_once ("../cabecera.php");
-    require_once("../bbdd/bbdd.php");
+    require_once("../clases/DBManager.php");
     
     if (isset($_POST["username"])){
         $username = $_POST["username"];
         $password = $_POST["password"];
         $password2 = $_POST["password2"];
-        if($username==NULL | $password==NULL | $password2==NULL){ //si hay campos en blanco...
-            echo "Un campo está vacio.";
-            Registro(); //MIRAR COMO LLAMAR DE NUEVO AL FORMULARIO DE REGISTRO
+        if($username==NULL | $password==NULL | $password2==NULL){
+            echo ("<span>Debe rellenar todos los campos</span><br />");
+            Registro();
         }
         else{
-            if($password!=$password2){ //si las contraseñas introducidas no coinciden...
-                echo "Las contraseñas no coinciden";
+            if($password!=$password2){
+                echo ("<span>Las contrase&ntilde;as no coinciden.</span><br />");
                 Registro();
             }
             else{
-                $checkuser = seleccionarusuario($username);
-                $username_exist = mysqli_num_rows($checkuser);
-                if ($username_exist > 0) { //si el usuario existe
-                    echo "El nombre de usuario está ya en uso";
+                $db = new DBManager('localhost', 'root', 'root', 'MyPhoto');
+                if ($db->ExistUser($username)){
+                    echo ("<span>El nombre de usuario est&aacute; ya en uso.</span><br />");
                     Registro();
                 }
                 else{
-                    insertarlogin($username, $password);
-                    echo 'El usuario '.$username.' ha sido registrado de manera satisfactoria.<br />';
-                    ?>
-                     <SCRIPT LANGUAGE="javascript"> location.href = "../index.php" </SCRIPT>
-                    <?php
+                    $db->AddUser($username, $password);
+                    echo ("<span>El usuario $username ha sido registrado de manera satisfactoria.</span><br />");
+                    // Iniciamos sesión al crear nuevo usuario
+                    session_start();
+                    $_SESSION["k_username"] = $username;
+                    echo ('<SCRIPT LANGUAGE="javascript"> location.href = "../index.php" </SCRIPT>');
 
                 }
             }

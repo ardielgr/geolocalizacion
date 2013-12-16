@@ -1,12 +1,6 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php
-function ruta_raiz() {
- //   $directorio = explode("/", $_SERVER['PHP_SELF']); //recoge la direccion donde se encuentra el script en ejecución y la separa por /
-    //echo "http://".$_SERVER["HTTP_HOST"]."/".$directorio[1]; // devuelve la direccion raiz del servidor al que se accede
-    echo "http://localhost/geolocalizacion";
-}
-?>
   <head>
     <meta charset="utf-8">
     <title>Proyecto Geolocalizacion</title>
@@ -16,7 +10,7 @@ function ruta_raiz() {
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="<?ruta_raiz();?>/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="http://localhost/geolocalizacion/bootstrap/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -26,13 +20,13 @@ function ruta_raiz() {
         padding: 9px 0;
       }
     </style>
-    <link href="<?ruta_raiz();?>/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <script src="<?ruta_raiz();?>/jquery.min.js"></script>
+    <link href="http://localhost/geolocalizacion/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="http://localhost/geolocalizacion/jquery.min.js"></script>
 
     
 <link rel="stylesheet" href="<?ruta_raiz();?>/gmap3-menu.css">
-	<script src="<?ruta_raiz();?>/gmap3.min.js"></script>
-	<script src="<?ruta_raiz();?>/gmap3-menu.js"></script>    
+	<script src="http://localhost/geolocalizacion/gmap3.min.js"></script>
+	<script src="http://localhost/geolocalizacion/gmap3-menu.js"></script>    
     
     <!-- MAPS -->
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
@@ -107,4 +101,9 @@ initialize();
 
   </head>
   <body>
-<?php  require_once 'menu.php'; ?>
+<?php
+    require_once 'menu.php';
+    function ruta_raiz(){
+        return "http://localhost/geolocalizacion";
+    }
+?>
