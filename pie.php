@@ -1,8 +1,9 @@
     <hr>
 
     <footer>
-        <p>&copy; Adriana Eusebio León</p>
-        <p> Fernando y Ardiel</p>
+        <p>
+            <span>&copy; Fernando Gonz&aacute;lez L&oacute;pez-Pe&ntilde;alver &AMP; Ardiel Garc&iacute;a Rodr&iacute;guez</span>
+        </p>
     </footer>
       
   </body>

@@ -1,22 +1,19 @@
-<?
+<?php
     require_once("../cabecera.php");
-?>
-            <ul class="nav">
-              <li><a href="<?ruta_raiz();?>/index.php">Home</a></li>
-              <?
-              if(!isset($_SESSION)){
-                session_start();
-                if ($_SESSION["k_username"] != null) {
-              ?>
-              <li><a href="<?ruta_raiz();?>/imagenes/imagenes.php">Imagenes</a></li>
-              <?
-                }
-                }
-              ?>
-            </ul>
-<?    
-    require_once ("../menuderecha.php");
     require_once("../bbdd/bbdd.php");
+    if ($_SESSION["k_username"] == NULL){
+      echo('
+      <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span9">
+          <div class="hero-unit">
+              <h2>No tiene los permisos necesarios para ver esta secci&oacute;n</h2>
+          </div>
+         </div>
+      </div>
+      </div>
+      ');
+    }else{
 ?>
     <div class="container-fluid">
       <div class="row-fluid">
@@ -41,6 +38,7 @@
         </div><!--/span-->
       </div><!--/row-->
     </div><!--/.fluid-container-->
-<?
+<?php
+    }
 require_once("../pie.php");
 ?>

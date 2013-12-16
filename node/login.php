@@ -1,12 +1,5 @@
 <?php
     require_once ("../cabecera.php");
-    echo <<<END
-    <ul class="nav">
-        <li class="active"><a href="../index.php">Home</a></li>
-    </ul>
-END;
-  
-    require_once ("../menuderecha.php");
     require_once("../clases/DBManager.php");
        
     if (isset($_POST["usuario"])){
@@ -61,6 +54,5 @@ END;
     </div><!--/.fluid-container-->
 END;
     }
-
     require_once ("../pie.php");
 ?>

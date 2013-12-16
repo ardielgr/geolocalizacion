@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?
+<?php
 function ruta_raiz() {
  //   $directorio = explode("/", $_SERVER['PHP_SELF']); //recoge la direccion donde se encuentra el script en ejecución y la separa por /
     //echo "http://".$_SERVER["HTTP_HOST"]."/".$directorio[1]; // devuelve la direccion raiz del servidor al que se accede
@@ -95,13 +95,6 @@ function initialize() {
 
 initialize();
 
-
-
-
-
-
-
-
 });
 
 	    </script>
@@ -113,17 +106,5 @@ initialize();
     <![endif]-->
 
   </head>
-
   <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand">GEOLOCALIZACIÓN</a>
-
-          
+<?php  require_once 'menu.php'; ?>

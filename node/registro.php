@@ -1,45 +1,7 @@
 <?php
     require_once ("../cabecera.php");
-?>
-    <ul class="nav">
-        <li class="active"><a href="<?ruta_raiz();?>/index.php">Home</a></li>
-    </ul>
-<?    
-    require_once ("../menuderecha.php");
     require_once("../bbdd/bbdd.php");
-    function Registro(){
-        ?>
-    <div class="container-fluid">
-      <div class="row-fluid">
-
-        <div class="span9">
-          <div class="hero-unit">
-              <form action="registro.php" method="post">
-              <table border="0">
-                <tr>
-                    <td>Usuario:</td> 
-                    <td><input type="text" name="username" size="30" maxlength="20" /></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><input type="password" name="password" size="40" maxlength="10" /></td>
-                </tr>
-                <tr>
-                    <td>Confirma:</td>
-                    <td><input type="password" name="password2" size="40" maxlength="10" /></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Registrar"/></td>
-                </tr>
-              </table>
-            </form>  
-              
-          </div>
-        </div><!--/span-->
-      </div><!--/row-->
-    </div><!--/.fluid-container-->
-        <?php
-    }
+    
     if (isset($_POST["username"])){
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -73,6 +35,40 @@
     }
     else{
         Registro();
+    }
+    
+    function Registro(){
+    echo <<<END
+    <div class="container-fluid">
+      <div class="row-fluid">
+
+        <div class="span9">
+          <div class="hero-unit">
+              <form action="registro.php" method="post">
+              <table border="0">
+                <tr>
+                    <td>Usuario:</td> 
+                    <td><input type="text" name="username" size="30" maxlength="20" /></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" size="40" maxlength="10" /></td>
+                </tr>
+                <tr>
+                    <td>Confirma:</td>
+                    <td><input type="password" name="password2" size="40" maxlength="10" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Registrar"/></td>
+                </tr>
+              </table>
+            </form>  
+              
+          </div>
+        </div>
+      </div>
+    </div>
+END;
     }
 
     require_once ("../pie.php");
