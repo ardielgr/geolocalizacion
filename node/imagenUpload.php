@@ -1,8 +1,7 @@
 <?php
-    require_once("../cabecera.php");
-    require_once("../clases/DBManager.php");
-    require_once("../clases/Gps.php");
-    require_once("../clases/Picture.php");
+    require_once("./clases/DBManager.php");
+    require_once("./clases/Gps.php");
+    require_once("./clases/Picture.php");
     
     if (isset($_FILES["imagen"])){
         $usuario = $_SESSION["k_username"];
@@ -31,7 +30,7 @@
       <div class="row-fluid">
         <div class="span9">
           <div class="hero-unit">
-            <form action='imagenUpload.php' method='POST' enctype="multipart/form-data">
+            <form action='<?echo ruta_raiz();?>/?node=imagenUpload' method='POST' enctype="multipart/form-data">
                 <label for="file">Nombre del archivo:</label>
                     <input type="file" name="imagen" id="file">
                     <input type="submit" name="subir" value="Subir imagen"><br />
@@ -43,5 +42,4 @@
     </div>
 <?php
     }
-    require_once("../pie.php");
 ?>

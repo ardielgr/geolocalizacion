@@ -14,25 +14,24 @@
        echo ('
          </ul>
          <ul class="navbar-text pull-right">
-            <a href="'.ruta_raiz().'/node/registro.php" class="navbar-link">Registrarse</a>
-            <a href="'.ruta_raiz().'/node/login.php" class="navbar-link">Logearse</a>
+            <a href="'.ruta_raiz().'/?node=registro" class="navbar-link">Registrarse</a>
+            <a href="'.ruta_raiz().'/?node=login" class="navbar-link">Logearse</a>
          </ul>
        ');
     } else {
         echo('
-             <li><a href="'.ruta_raiz().'/node/imagenes.php">Imagenes</a></li>
+             <li><a href="'.ruta_raiz().'/?node=imagenes">Imagenes</a></li>
           </ul>
           <ul class="nav">
             <li style="color:red;width:100%;padding-left:8em">'.@$_SESSION['k_username'].'</li>
           </ul>
           <ul class="navbar-text pull-right">
-             <a href="'.ruta_raiz().'/node/logout.php" class="navbar-link">Desconectarse</a> 
+             <a href="'.ruta_raiz().'/?node=logout" class="navbar-link">Desconectarse</a> 
           </ul>
         ');
     }   
 ?>
-<!-- A CONTINUACIÓN CERRAMOS TODAS LAS SECCIONES ABIERTAS EN CABECERA.PHP -->
-          </div><!--/.nav-collapse -->
+          </div>
        </div>
     </div>
             

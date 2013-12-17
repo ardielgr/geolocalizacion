@@ -1,6 +1,6 @@
 <?php
-    require_once ("../cabecera.php");
-    require_once("../clases/DBManager.php");
+    set_include_path('./');
+    require_once("./clases/DBManager.php");
        
     if (isset($_POST["usuario"])){
         if(trim($_POST["usuario"]) != '' && trim($_POST["password"]) != ''){
@@ -24,13 +24,13 @@
     }
 
     function Ingreso(){
-    echo <<<END
+    echo ('
     <div class="container-fluid">
       <div class="row-fluid">
 
         <div class="span9">
           <div class="hero-unit">
-            <form action="login.php" method="post">
+            <form action="'.ruta_raiz().'/?node=login" method="post">
                 <table border="0">
                     <tr>
                         <td>Usuario:</td> 
@@ -51,7 +51,6 @@
         </div>
       </div>
     </div>
-END;
+    ');
     }
-    require_once ("../pie.php");
 ?>

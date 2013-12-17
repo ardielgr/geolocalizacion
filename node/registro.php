@@ -1,6 +1,5 @@
 <?php
-    require_once ("../cabecera.php");
-    require_once("../clases/DBManager.php");
+    require_once("./clases/DBManager.php");
     
     if (isset($_POST["username"])){
         $username = $_POST["username"];
@@ -37,13 +36,13 @@
     }
     
     function Registro(){
-    echo <<<END
+    echo ('
     <div class="container-fluid">
       <div class="row-fluid">
 
         <div class="span9">
           <div class="hero-unit">
-              <form action="registro.php" method="post">
+              <form action="'.ruta_raiz().'/?node=registro" method="post">
               <table border="0">
                 <tr>
                     <td>Usuario:</td> 
@@ -67,8 +66,6 @@
         </div>
       </div>
     </div>
-END;
+    ');
     }
-
-    require_once ("../pie.php");
 ?>

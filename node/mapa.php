@@ -1,6 +1,5 @@
 <?php
-    require_once ("../cabecera.php");
-    require_once ("../clases/DBManager.php");
+    require_once ("./clases/DBManager.php");
     
     $iname = $_GET['nombre'];
     $longlat = DBManager::GetImageLongAndLat($iname);
@@ -37,6 +36,3 @@
       window.onload=initialize;
     </script>
     <div class="hero-unit" id="map_canvas"></div>
-<?php
-    require_once("../pie.php");
-?>

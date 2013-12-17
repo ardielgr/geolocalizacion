@@ -1,6 +1,10 @@
 <?php
    session_start();
    require_once("./cabecera.php");
+   
+   $nodes = array("imagenUpload", "imagenes", "login", "logout", "mapa", "registro");
+   
+   if (($_GET["node"] == NULL)||(!in_array($_GET["node"], $nodes))){
 ?>
     <div class="container-fluid">
       <div class="row-fluid">
@@ -16,5 +20,8 @@
     </div>
 
 <?php
+   }else{
+       require_once 'node/'.$_GET['node'].'.php';
+   }
 require_once("./pie.php");
 ?>
