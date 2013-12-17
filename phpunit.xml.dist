@@ -10,7 +10,7 @@
   <testsuites>
     <testsuite name="MyPhoto Tests">
       <directory>test</directory>
-      <file>test/*Test.php</file>
+      <file>test/PictureTest.php</file>
     </testsuite>
 
   </testsuites>
