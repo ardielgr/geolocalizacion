@@ -6,22 +6,20 @@
     if (isset($_FILES["imagen"])){
         $usuario = $_SESSION["k_username"];
         $tmp_name = $_FILES["imagen"]["tmp_name"];
-        $ruta_destino = "../imagenes/";
+        $ruta_destino = "./imagenes/";
         $iname = trim($_FILES["imagen"]["name"]);
-        if ($tipo == "image/jpeg"){
-            $path = $ruta_destino.$iname;
-            move_uploaded_file($tmp_name, $path);  // Copiamos el fichero en su carpeta de destino
-            $exif = exif_read_data($path, 0, true);
-            $tipo = $exif['FILE']["MimeType"];
-            $lon = Gps::getGps($exif['GPS']["GPSLongitude"], $exif['GPS']['GPSLongitudeRef']);
-            $lat = Gps::getGps($exif['GPS']["GPSLatitude"], $exif['GPS']['GPSLatitudeRef']);
+        $path = $ruta_destino.$iname;
+        move_uploaded_file($tmp_name, $path);  // Copiamos el fichero en su carpeta de destino
+        $exif = exif_read_data($path, 0, true);
+        $tipo = $exif['FILE']["MimeType"];
+        $lon = Gps::getGps($exif['GPS']["GPSLongitude"], $exif['GPS']['GPSLongitudeRef']);
+        $lat = Gps::getGps($exif['GPS']["GPSLatitude"], $exif['GPS']['GPSLatitudeRef']);
 
-            
-            $img = new Picture($iname, $usuario, $path, $tipo, $lon, $lat);
-            if (!DBManager::ExistImage($iname)){
-                if (DBManager::AddImage($img)){
-                    echo ("<span>Imagen $iname a&ntilde;adida a la base de datos.</span><br />");
-                }
+
+        $img = new Picture($iname, $usuario, $path, $tipo, $lon, $lat);
+        if (!DBManager::ExistImage($iname)){
+            if (DBManager::AddImage($img)){
+                echo ("<span>Imagen $iname a&ntilde;adida a la base de datos.</span><br />");
             }
         }
     }else{

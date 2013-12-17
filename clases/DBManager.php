@@ -62,11 +62,28 @@ class DBManager{
         return NULL;
     }
     
+    public static function GetUserImages($i_uname){
+        self::initialize();
+        $query = "SELECT * FROM ". self::IMAGES_TABLE ." WHERE usuario='$i_uname'";
+        $result = mysqli_query(self::$_conexion, $query);
+        $i = 0;
+        while ($img = mysqli_fetch_array($result)){
+            $images[$i] = new Picture($img[1], $img[2], $img[3], $img[4], $img[5], $img[6], $img[0]);
+            $i++;
+        }
+        return $images;
+    }
+    
     public static function GetUserImagesPaths($i_uname){
         self::initialize();
         $query = "SELECT foto FROM ". self::IMAGES_TABLE ." WHERE usuario='$i_uname'";
         $result = mysqli_query(self::$_conexion, $query);
-        return mysqli_fetch_array($result);
+        $i = 0;
+        while ($img = mysqli_fetch_array($result)){
+            $paths[$i] = $img['foto'];
+            $i++;
+        }
+        return $paths;
     }
     
     public static function GetImageLongAndLat($i_iname){

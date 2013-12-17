@@ -25,7 +25,7 @@
                     // Iniciamos sesión al crear nuevo usuario
                     session_start();
                     $_SESSION["k_username"] = $username;
-                    echo ('<SCRIPT LANGUAGE="javascript"> location.href = "../index.php" </SCRIPT>');
+                    echo ('<SCRIPT LANGUAGE="javascript"> location.href = "<?echo ruta_raiz();?>" </SCRIPT>');
 
                 }
             }

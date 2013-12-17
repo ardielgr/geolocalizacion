@@ -21,7 +21,7 @@
         var nom = '<?php echo $iname;?>'
         var latlng = new google.maps.LatLng(lat, lon);
         var myOptions = {
-          zoom: 3,
+          zoom: 13,
           center: latlng,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };

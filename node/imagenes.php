@@ -14,16 +14,9 @@
     }else{
         if ($_GET["seccion"] != NULL){
             if ($_GET["seccion"] == "listado"){
-            require_once './node/lvl2/pictureList.php';
-                        
+                require_once './node/lvl2/pictureList.php';        
             }else if ($_GET["seccion"] == "zona"){
-                /*
-                 * 
-                 * TRABAJO A REALIZAR
-                 * 
-                 */
-                // LATITUDE: 1 deg = 110.54 km
-                // LONGITUDE: 1 deg = 111.320*cos(LATITUDE) km
+                require_once './node/lvl2/imagesInRadius.php';
             }
         }else{
 ?>
