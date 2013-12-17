@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="MyPhoto" default="build">
- <target name="build"
-   depends="prepare,lint,phpunit"/>
 
+ <!-- BUILD -->
+ <target name="build" depends="prepare,lint,phpunit"/>
+
+ <!-- CLEAN -->
  <target name="clean" description="Cleanup build artifacts">
-  <delete dir="${basedir}/build/tests"/>
+    <delete dir="${basedir}/build/tests"/>
  </target>
  <!--
  <target name="findphp">
@@ -17,46 +19,56 @@
     </exec>  
  </target>
 -->
+ <!-- PREPARE -->
  <target name="prepare" depends="clean" description="Prepare for build">
-  <delete dir="${basedir}/build/tests"/>
- </target>
-
- <target name="lint" description="Perform syntax check of sourcecode files">
-  <apply executable="php" failonerror="true">
-   <arg value="-l" />
-
-   <fileset dir="${basedir}/clases">
-    <include name="**/*.php" />
-    <modified />
-   </fileset>
-
-   <fileset dir="${basedir}/test">
-    <include name="**/*.php" />
-    <modified />
-   </fileset>
-  </apply>
+    <delete dir="${basedir}/build/tests"/>
  </target>
  
+ <!-- LINT -->
+ <target name="lint" description="Perform syntax check of sourcecode files">
+    <apply executable="php" failonerror="true">
+       <arg value="-l" />
+       <fileset dir="${basedir}/clases">
+          <include name="**/*.php" />
+          <modified />
+       </fileset>
+       <fileset dir="${basedir}/test">
+          <include name="**/*.php" />
+          <modified />
+       </fileset>
+    </apply>
+ </target>
+ 
+ <!-- INSTALL PHPUNIT -->
  <target name="installPhpUnit">
+     <exec executable="echo">
+       <arg value=" ·· Descargando 'phpunit.phar' ·· " />
+    </exec>
     <exec executable="wget">
-       <arg value="http://pear.php.net/go-pear.phar" />
+       <arg value="https://phar.phpunit.de/phpunit.phar" />
     </exec>
-    <exec executable="php">
-       <arg value="go-pear.phar" />
+     <exec executable="echo">
+       <arg value=" ·· Dando permisos de ejecución a 'phpunit.phar' ·· " />
     </exec>
-    <exec executable="pear">
-       <arg value="config-set" />
-       <arg value="auto_discover" />
-       <arg value="1" />
+    <exec executable="chmod">
+       <arg value="+x" />
+       <arg value="phpunit.phar" />
     </exec>
-    <exec executable="pear">
-       <arg value="install" />
-       <arg value="pear.phpunit.de/PHPUnit" />
+     <exec executable="echo">
+       <arg value=" ·· Renombrando 'phpunit.phar' como 'phpunit' ·· " />
+    </exec>
+    <exec executable="mv">
+       <arg value="phpunit.phar" />
+       <arg value="phpunit" />
+    </exec>
+    <exec executable="phpunit">
+       <arg value="--version" />
     </exec>
  </target>
 
+ <!-- PHPUNIT -->
  <target name="phpunit" description="Run unit tests with PHPUnit">
-     <exec executable="phpunit" failonerror="true"/>
+    <exec executable="phpunit" failonerror="true"/>
  </target>
 
 </project>
