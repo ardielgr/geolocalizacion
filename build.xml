@@ -36,13 +36,27 @@
    </fileset>
   </apply>
  </target>
+ 
+ <target name="installPhpUnit">
+    <exec executable="wget">
+       <arg value="http://pear.php.net/go-pear.phar" />
+    </exec>
+    <exec executable="php">
+       <arg value="go-pear.phar" />
+    </exec>
+    <exec executable="pear">
+       <arg value="config-set" />
+       <arg value="auto_discover" />
+       <arg value="1" />
+    </exec>
+    <exec executable="pear">
+       <arg value="install" />
+       <arg value="pear.phpunit.de/PHPUnit" />
+    </exec>
+ </target>
 
  <target name="phpunit" description="Run unit tests with PHPUnit">
-  <exec executable="pear">
-        <arg value="install" />
-        <arg value="pear.phpunit.de/PHPUnit" />
-    </exec>
-  <!--<exec executable="phpunit" failonerror="true"/>-->
+     <exec executable="phpunit" failonerror="true"/>
  </target>
 
 </project>
