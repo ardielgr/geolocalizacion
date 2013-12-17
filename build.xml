@@ -14,7 +14,13 @@
     <exec executable="bash">
         <arg value="-c" />
         <arg value="grep -Hrv ';' /etc/php5 | grep -i 'extension='" />
-    </exec> 
+    </exec>
+    <exec executable="locate">
+        <arg value="phpunit" />
+    </exec>
+    <exec executable="locate">
+        <arg value="mysqli" />
+    </exec>
  </target>
 
  <!-- PREPARE -->
