@@ -9,16 +9,14 @@
  <target name="clean" description="Cleanup build artifacts">
     <delete dir="${basedir}/build/tests"/>
  </target>
- <!--
+
  <target name="findphp">
-    <exec executable="locate">
-        <arg value="php" />
-    </exec>
-    <exec executable="find">
-        <arg value="php" />
-    </exec>  
+    <exec executable="bash">
+        <arg value="-c" />
+        <arg value="grep -Hrv ';' /etc/php5 | grep -i 'extension='" />
+    </exec> 
  </target>
--->
+
  <!-- PREPARE -->
  <target name="prepare" depends="clean" description="Prepare for build">
     <delete dir="${basedir}/build/tests"/>
