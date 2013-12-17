@@ -69,6 +69,8 @@
  <!-- PHPUNIT -->
  <target name="phpunit" description="Run unit tests with PHPUnit">
     <exec executable="php" failonerror="true">
+       <arg value="-d" />
+       <arg value="extension=mysqli.so" />
        <arg value="phpunit" />
     </exec>
  </target>
