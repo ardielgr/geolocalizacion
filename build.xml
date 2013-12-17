@@ -38,8 +38,9 @@
  </target>
 
  <target name="phpunit" description="Run unit tests with PHPUnit">
-  <exec executable="locate">
-        <arg value="phpunit" />
+  <exec executable="pear">
+        <arg value="install" />
+        <arg value="pear.phpunit.de/PHPUnit" />
     </exec>
   <!--<exec executable="phpunit" failonerror="true"/>-->
  </target>
