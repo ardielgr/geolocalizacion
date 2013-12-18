@@ -11,10 +11,6 @@ class PictureTest extends PHPUnit_Framework_TestCase{
     
     public function tearDown(){ }
     
-    function testValidPath(){
-        $this->assertTrue($this->_picture->validPath());
-    }
-    
     function testInvalidPath(){
         $this->_picture->path = "/foo/bar.jpg";
         $this->assertFalse($this->_picture->validPath());
