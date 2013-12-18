@@ -1,22 +1,8 @@
 <?php
     require_once ("./clases/DBManager.php");
     
-    $iname = $_GET['img'];
-    $longlat = DBManager::GetImageLongAndLat($iname);
-    $longitud = $longlat[0];
-    $latitud = $longlat[1];
-    //$userPictures = DBManager::GetUserImages($_SESSION['k_username']);
     
-    $centro = array(27.72, -17.95713);
     
-    $radius = 10100;
-    $imgsInRange = GetPicturesInRadius($_SESSION['k_username'], $centro, $radius);
-    if ($imgsInRange){
-        foreach ($imgsInRange as $img){
-            echo "$img->name<br />";
-        }
-    }
-        
     /**
      * Calcula la distancia (en metros) entre dos puntos expresados como latitud, longitud.
      * Hace uso de la fórmula 'Haversine'.
@@ -54,6 +40,65 @@
         }
         return $result;
     }
+    
+    
+    
+    if ($_SESSION["k_username"] == NULL){
+      echo('
+      <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span9">
+          <div class="hero-unit">
+              <h2>No tiene los permisos necesarios para ver esta secci&oacute;n</h2>
+          </div>
+         </div>
+      </div>
+      </div>
+      ');
+    }else{
+        $uname = $_SESSION["k_username"];
+        if (!isset($_POST['imgID'])){
+        ?>
+        <div class="container-fluid">
+          <div class="row-fluid">
+            <div class="span9">
+              <div class="hero-unit">
+                <form action='<?echo ruta_raiz();?>/?node=imagenes&seccion=zona' method='POST' enctype="multipart/form-data">
+                    <label for="select">Imagen de referencia:</label>
+                    <select name="imgID">
+                        <?php
+                            $imgs = DBManager::GetUserImages($uname);
+                            foreach ($imgs as $img){
+                                echo ("<option value=\"$img->id\">$img->name</option>");
+                            }
+                        ?>
+                    </select>
+                    <label for="number"> Radio(metros):</label>
+                    <input type="number" value="500" name="radio" min="100" max="99999">
+                    <input type="submit" value="Buscar"><br />
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <?php
+        }else if (isset($_POST['radio'])){
+            $imgID = $_POST['imgID'];
+            $radius = $_POST['radio'];
+            $img = DBManager::GetPicture($imgID);
+            //$longitud = $longlat[0];
+            //$latitud = $longlat[1];
+
+            $centro = array($img->latitud, $img->longitud);
+
+
+            $imgsInRange = GetPicturesInRadius($uname, $centro, $radius);
+            if ($imgsInRange){
+                foreach ($imgsInRange as $img){
+                    echo "$img->name<br />";
+                }
+            }
 ?>
 
 
@@ -89,6 +134,7 @@
                    echo ("
         marcador = new google.maps.Marker({
             position: new google.maps.LatLng($img->latitud, $img->longitud),
+            title: '$img->name',
             map: map
         });
                          ");
@@ -107,3 +153,8 @@
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
     <div class="hero-unit" id="map_canvas"></div>
+
+<?php
+        }
+    }
+?>
