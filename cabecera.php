@@ -21,13 +21,9 @@
       }
     </style>
     <link href="http://localhost/geolocalizacion/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <script src="http://localhost/geolocalizacion/jquery.min.js"></script>
-
-    
-<link rel="stylesheet" href="<?ruta_raiz();?>/gmap3-menu.css">
-	<script src="http://localhost/geolocalizacion/gmap3.min.js"></script>
-	<script src="http://localhost/geolocalizacion/gmap3-menu.js"></script>    
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <link href="<?ruta_raiz();?>/gmap3-menu.css" rel="stylesheet">  
+    <script src="http://localhost/geolocalizacion/jquery.min.js"></script>  
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>

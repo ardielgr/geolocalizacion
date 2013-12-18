@@ -1,8 +1,6 @@
 <?php
     require_once ("./clases/DBManager.php");
-    
-    
-    
+
     /**
      * Calcula la distancia (en metros) entre dos puntos expresados como latitud, longitud.
      * Hace uso de la fórmula 'Haversine'.
@@ -32,7 +30,6 @@
         foreach ($userPictures as $pic){
             $punto = array($pic->latitud, $pic->longitud);
             $dist = GetDistanceLatLongPoints($punto, $i_center);
-            echo "$dist <= $i_rad?<br />"; // DEBUG
             if (($dist <= $i_rad)&&($dist != 0)){
                 $result[$i] = $pic;
                 $i++;
@@ -87,18 +84,8 @@
             $imgID = $_POST['imgID'];
             $radius = $_POST['radio'];
             $img = DBManager::GetPicture($imgID);
-            //$longitud = $longlat[0];
-            //$latitud = $longlat[1];
-
             $centro = array($img->latitud, $img->longitud);
-
-
             $imgsInRange = GetPicturesInRadius($uname, $centro, $radius);
-            if ($imgsInRange){
-                foreach ($imgsInRange as $img){
-                    echo "$img->name<br />";
-                }
-            }
 ?>
 
 
@@ -138,6 +125,13 @@
             map: map
         });
                          ");
+                   echo ("
+            var infoWin = new google.maps.InfoWindow({
+                position: new google.maps.LatLng($img->latitud, $img->longitud),
+                map: map,
+                content: '<img src=\"$img->path\" height=\"100\" width=\"100\" >'
+        });
+                        ");
                 }
             }
         ?>
@@ -146,6 +140,7 @@
             fillColor: '#AA0000',
             center: latlng,
             radius: rad,
+            strokeWeight: 1,
             map: map
         });
         

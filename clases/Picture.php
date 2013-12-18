@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Clase que representa una imagen almacenada en la base de datos.
+ */
 class Picture{
     public $id;
     public $name;
@@ -19,6 +22,10 @@ class Picture{
         $this->latitud = $i_lat;
     }
     
+    /**
+     * Comprueba la validez del campo 'path' de la imagen.
+     * @return type Devuelve 'true' si es una ruta válida; 'false' en caso contrario.
+     */
     function validPath(){ return file_exists($this->path); }
 }
 
