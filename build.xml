@@ -72,9 +72,12 @@
 
  <!-- PHPUNIT -->
  <target name="phpunit" description="Run unit tests with PHPUnit">
+    <!--
     <exec executable="php" failonerror="true">
        <arg value="phpunit" />
     </exec>
+    -->
+    <exec executable="phpunit" failonerror="true" />
  </target>
 
 </project>
